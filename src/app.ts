@@ -2,6 +2,8 @@ import express, { urlencoded }  from "express";
 import path from 'path'
 import router from './router'
 import routerAdmin from './routerAdmin'
+import morgan from 'morgan' //javob olish uchun ishlatamiz
+import { MORGAN_FORMAT } from "./libs/config";
 
 // 1- ENTRANCE // 
 const app = express()
@@ -10,6 +12,8 @@ const app = express()
 app.use(express.static(path.join(__dirname, "public"))) 
 app.use(urlencoded({extended: true}))
 app.use(express.json())
+app.use(morgan(MORGAN_FORMAT)) // requestga javob qaytaradi 
+
 
 // 2-SESSIONS
 // 3-VIEWS
